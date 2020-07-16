@@ -1,0 +1,30 @@
+/* .border-red {
+    border: 1px solid red;
+} */
+
+.container {
+    width: 100% !important;
+}
+
+.left-side{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.newsListArea{
+    display:flex;
+}
+
+.navbar-brand{
+padding-top: 22px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.right-side{
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: flex-start; */
+    flex-direction: column;
+}
