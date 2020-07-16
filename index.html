@@ -7,12 +7,11 @@
     <title>Global News Feed</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 </head>
 
 <body>
-
     <nav class="navbar navbar-light bg-white border-color-dark fixed-top scrolled">
         <a class="navbar-brand">
             <h1 style="color:rgb(105, 103, 103)">Global News Feed <i class="fas fa-globe"></i></h1>
@@ -29,34 +28,23 @@
     <hr>
 
     <container>
-
         <div class="row justify-content-start ">
             <div class="col-2 justify-content-start left-side" style="padding-top: 100px; padding-left: 60px;">
                 <p
                     style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
                     Showing <span id="numberOfArticles" class="text-info">0 </span>articles</p>
 
-                <div class="dropdown dropright mb-3">
-                    <button class="btn btn-outline-secondary dropdown-toggle"
-                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"
-                        type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        Categories
-                    </button>
-                    <hr>
-                    <div id="categoryDropdown"
-                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"
-                        class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <a class="p-2 text-muted" href="#" onclick="categoryType('general')">General</a>
-                        <a class="p-2 text-muted" href="#" onclick="categoryType('entertainment')">Entertainment</a>
-                        <a class="p-2 text-muted" href="#" onclick="categoryType('health')">Health</a>
-                        <a class="p-2 text-muted" href="#" onclick="categoryType('business')">Business</a>
-                        <a class="p-2 text-muted" href="#" onclick="categoryType('health')">Health</a>
-                        <a class="p-2 text-muted" href="#" onclick="categoryType('science')">Science</a>
-                        <a class="p-2 text-muted" href="#" onclick="categoryType('sports')">Sports</a>
-                        <a class="p-2 text-muted" href="#" onclick="categoryType('technology')">Technology</a>
-          
-                    </div>
+                <div
+                    style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                    Category:
+                    <select name="Categories" id="categories" onchange="searchByCategory()"
+                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        <option value="general">General</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="health">Health</option>
+                        <option value="sports">Sports</option>
+                        <option value="technology">Technology</option>
+                    </select>
                 </div>
                 <hr>
 
@@ -64,12 +52,12 @@
                 <h5 id="sources" class="mb-2"
                     style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
                     Sources</h5>
-
                 <ul class="list-group"></ul>
                 <h5 class="mt-2"><a href="#" onclick="callApi(newsList)"
                         style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Show
                         all</a></h5>
             </div>
+
 
             <div id="newsListArea" class="row col-8 border-red" style="padding-top: 100px; padding-left: 50px;">
                 <div class="card col-md-4">
@@ -85,10 +73,10 @@
                     </ul>
                 </div>
             </div>
+        </div>
 
-            <div class="col-2 right-side" style="padding-top: 100px;">
-
-                <div class="input">
+        <div class="col-2 right-side" style="padding-top: 100px;">
+            <!-- <div class="input">
                     <input type="text" placeholder="Enter the city" class="input_text btn btn-outline-secondary"
                         style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
                     <br><br>
@@ -103,12 +91,11 @@
                         <p class="clouds"></p>
                         <p class="desc"></p>
                     </div>
-                </div>
-            </div>
+                </div> -->
         </div>
 
-
     </container>
+
 
     <div class="row-container">
         <footer class="container footer sticky-bottom">
@@ -122,7 +109,7 @@
     </div>
 
 
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -133,8 +120,6 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
-
-    </div>
 
 </body>
 
