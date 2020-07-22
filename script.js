@@ -1,40 +1,74 @@
 let newsList = []
-// const apiKey = process.env.APIKEY
+let page = 1
+let selectedCategory = 'general'
+
+const apiKey = process.env.APIKEY
 
 const callApi = async () => {
-    //console.log(apiKey)
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=c2933304c2114b968e48c75b614810c3`
+    if (selectedCategory !== document.getElementById("categories").value) {
+        page = 1
+        selectedCategory = document.getElementById("categories").value
+        newList = []
+    } let url = `https://newsapi.org/v2/top-headlines?country=us&category=${selectedCategory}&page=${page}&apiKey=${apiKey}`
     let data = await fetch(url)
     let result = await data.json()
-    newsList = result.articles
+    newsList = newsList.concat(result.articles)
     console.log(newsList)
-    selectedSource = [];
     render(newsList)
-    // filterSources(newsList);
-    pageNum++;
+    // pageNum++;
 }
 
-// const callMoreApi = async () => {
-//     let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=c2933304c2114b968e48c75b614810c3`
-//     let data = await fetch(url)
-//     let result = await data.json()
-//     newsList = newsList.concat(result.articles)
-//     console.log(newsList)
-//     selectedSource = [];
-//     render(newsList)
-//     // filterSources(newsList);
-//     pageNum++;
-// }
-
+// category
 const searchByCategory = async () => {
-    let selectedCategory = document.getElementById("categories").value
     console.log(selectedCategory)
-    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${selectedCategory}apiKey=c2933304c2114b968e48c75b614810c3`
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${selectedCategory}&apiKey=${apiKey}`
     let data = await fetch(url)
     let result = await data.json()
     console.log(result)
     newsList = result.articles
     render(newsList)
+}
+
+// source
+const renderSource = () => {
+    let sources = newsList.map((item) => item.source.name);
+    let result = {};
+    for (let i = 0; i < sources.length; i++) {
+        if (sources[i] in result) {
+            result[sources[i]]++
+        } else {
+            result[sources[i]] = 1
+        }
+    }
+    let keys = Object.keys(result)
+    let sourceHTML = keys
+        .map(
+            (key) =>
+                `<input type="checkbox" onchange="searchBySource('${key}')">${key}:${result[key]}`
+        )
+        .join("")
+    document.getElementById("sourceArea").innerHTML = sourceHTML;
+}
+
+const searchBySource = (source) => {
+    let filteredList = newsList.filter((item) => item.source.name === source)
+    render(filteredList);
+}
+
+// keyword
+const searchByKeyword = async () => {
+    let keyword = document.getElementById("KeywordArea").value
+    let url = `https://newsapi.org/v2/everything?q=${keyword}&apiKey=${apiKey}`
+    let data = await fetch(url)
+    let result = await data.json()
+    newsList = result.articles
+    render(newsList)
+}
+
+// load more
+const viewMore = () => {
+    page++
+    callApi()
 }
 
 const render = (list) => {
@@ -54,10 +88,5 @@ const render = (list) => {
     }).join('')
     document.getElementById("newsListArea").innerHTML = newsHTML
 }
-
-/* <div class="card-body">
-       <a href="#" class="card-link">Card link</a>
-       <a href="#" class="card-link">Another link</a>
-   </div>*/
 
 callApi()

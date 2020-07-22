@@ -12,28 +12,30 @@
 </head>
 
 <body>
+    <!-- nave bar -->
     <nav class="navbar navbar-light bg-white border-color-dark fixed-top scrolled">
         <a class="navbar-brand">
             <h1 style="color:rgb(105, 103, 103)">Global News Feed <i class="fas fa-globe"></i></h1>
         </a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search for topics" id="search"
+        <!-- search -->
+        <input type="text" id="KeywordArea" /><button onclick="searchByKeyword()">Search</button>
+        <!-- <form class="form-inline">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search for topics" id="KeywordArea" 
                 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"
                 aria-label="Search">
-
-            <button class="btn btn-secondary rounded-right" type="submit"><i class="fas fa-search"
+            <button class="btn btn-secondary rounded-right" onclick="searchByKeyword()" type="submit"><i class="fas fa-search"
                     style="color:white"></i></button>
-        </form>
+        </form> -->
     </nav>
     <hr>
-
+    <!-- left bar -->
     <container>
         <div class="row justify-content-start ">
             <div class="col-2 justify-content-start left-side" style="padding-top: 100px; padding-left: 60px;">
                 <p
                     style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
                     Showing <span id="numberOfArticles" class="text-info">0 </span>articles</p>
-
+                <!-- category -->
                 <div
                     style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
                     Category:
@@ -47,18 +49,19 @@
                     </select>
                 </div>
                 <hr>
+                <!-- source -->
+                <div id="sourceArea">source checkbox will come here</div>
 
-                <p class="list-group"></p>
+                <!-- <p class="list-group"></p>
                 <h5 id="sources" class="mb-2"
                     style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
                     Sources</h5>
                 <ul class="list-group"></ul>
                 <h5 class="mt-2"><a href="#" onclick="callApi(newsList)"
                         style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Show
-                        all</a></h5>
+                        all</a></h5> -->
             </div>
-
-
+            <!-- news list -->
             <div id="newsListArea" class="row col-8 border-red" style="padding-top: 100px; padding-left: 50px;">
                 <div class="card col-md-4">
                     <img src="..." class="card-img-top" alt="...">
@@ -74,37 +77,23 @@
                 </div>
             </div>
         </div>
-
+        <!-- right side -->
         <div class="col-2 right-side" style="padding-top: 100px;">
-            <!-- <div class="input">
-                    <input type="text" placeholder="Enter the city" class="input_text btn btn-outline-secondary"
-                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
-                    <br><br>
-                    <input type="submit" value="Get the Weather" class="btn-outline-secondary rounded-right"
-                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-left:47px">
-                </div>
-                <br>
-                <div class="container">
-                    <div class="card" style="width:auto;">
-                        <h1 class="name" id="name"></h1>
-                        <p class="temp"></p>
-                        <p class="clouds"></p>
-                        <p class="desc"></p>
-                    </div>
-                </div> -->
         </div>
-
     </container>
 
-
+    <!-- footer  -->
     <div class="row-container">
         <footer class="container footer sticky-bottom">
             <span class="float-left" id="pageNum"
                 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
                 <a href="#nav">Back to top</a></span>
-            <button class="btn float-right p-0 mt-0"
+            <!-- load more -->
+            <br>
+            <a href="#" onclick="viewMore()">View More</a>
+            <!-- <button class="btn float-right p-0 mt-0"
                 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"
-                onclick="callMoreApi()">More</button>
+                onclick="callMoreApi()">More</button> -->
         </footer>
     </div>
 
